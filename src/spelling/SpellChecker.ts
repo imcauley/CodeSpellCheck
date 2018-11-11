@@ -10,6 +10,7 @@ class SpellChecker {
         let deletes = []
         let transposes = []
         let replaces = []
+        let inserts = []
         for(var i = 0; i < (word.length + 1); i++) {
             let new_split = [
                 word.slice(0,i),
@@ -45,7 +46,15 @@ class SpellChecker {
                 }
             }
         }
-            if (split[1] != ''){
+        //[ 'astring', 'bstring', 'cstring', ...]
+        for(var i = 0; i < splits.length; i++) {
+            let split = splits[i]
+            for(var j = 0; j < letters.length; j++){
+                let c = letters[j]
+                let new_replace = split[0] + c + split[1]
+                inserts.push(new_replace)
+            }
+        }
     }
 }
 
