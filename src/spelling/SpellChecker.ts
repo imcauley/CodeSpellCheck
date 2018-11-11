@@ -8,6 +8,7 @@ class SpellChecker {
         let splits = []
 
         let deletes = []
+        let transposes = []
         for(var i = 0; i < (word.length + 1); i++) {
             let new_split = [
                 word.slice(0,i),
@@ -22,6 +23,14 @@ class SpellChecker {
             if (split[1] != ''){
                 let new_delete = split[0] + split[1].slice(1,)
                 deletes.push(new_delete)
+            }
+        }
+        //[ 'tsring', 'srting', 'stirng', 'strnig', 'strign' ]
+        for(var i = 0; i < splits.length; i++) {
+            let split = splits[i]
+            if (split[1].length > 1){
+                let new_delete = split[0] + split[1][1] + split[1][0] + split[1].slice(2,)
+                transposes.push(new_delete)
             }
         }
     }
