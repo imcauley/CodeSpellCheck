@@ -6,15 +6,17 @@ class SpellChecker {
     one_edit(word: string) {
         let letters = 'abcdefghijklmnopqrstuvwxyz'
         let splits = []
-
+        let changes = []
+        
         let deletes = []
         let transposes = []
         let replaces = []
         let inserts = []
+
         for(var i = 0; i < (word.length + 1); i++) {
             let new_split = [
                 word.slice(0,i),
-                word.slice(i,word.length)
+                word.slice(i,)
             ]
             splits.push(new_split)
         }
@@ -55,6 +57,21 @@ class SpellChecker {
                 inserts.push(new_replace)
             }
         }
+
+
+
+        let all_changes = deletes.concat(transposes)
+        all_changes = all_changes.concat(replaces)
+        all_changes = all_changes.concat(inserts)
+
+
+        for(var i = 0; i < all_changes.length; i++) {
+            if(changes.indexOf(all_changes[i]) == -1) {
+                changes.push(all_changes[i])
+            }
+        }
+        return changes
+
     }
 }
 
