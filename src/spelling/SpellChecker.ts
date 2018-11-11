@@ -9,6 +9,7 @@ class SpellChecker {
 
         let deletes = []
         let transposes = []
+        let replaces = []
         for(var i = 0; i < (word.length + 1); i++) {
             let new_split = [
                 word.slice(0,i),
@@ -33,6 +34,18 @@ class SpellChecker {
                 transposes.push(new_delete)
             }
         }
+        //[ 'atring', 'btring', 'ctring', ...]
+        for(var i = 0; i < splits.length; i++) {
+            let split = splits[i]
+            if (split[1] != ''){
+                for(var j = 0; j < letters.length; j++){
+                    let c = letters[j]
+                    let new_replace = split[0] + c + split[1].slice(1,)
+                    replaces.push(new_replace)
+                }
+            }
+        }
+            if (split[1] != ''){
     }
 }
 
