@@ -7,6 +7,7 @@ class SpellChecker {
         let letters = 'abcdefghijklmnopqrstuvwxyz'
         let splits = []
 
+        let deletes = []
         for(var i = 0; i < (word.length + 1); i++) {
             let new_split = [
                 word.slice(0,i),
@@ -15,7 +16,14 @@ class SpellChecker {
             splits.push(new_split)
         }
 
-        return splits
+        //[ 'tring', 'sring', 'sting', 'strng', 'strig', 'strin' ]
+        for(var i = 0; i < splits.length; i++) {
+            let split = splits[i]
+            if (split[1] != ''){
+                let new_delete = split[0] + split[1].slice(1,)
+                deletes.push(new_delete)
+            }
+        }
     }
 }
 
