@@ -1,6 +1,18 @@
+import * as word_file from './word_list.json'
+
 class SpellChecker {
+    word_list: string[]
+
     public static main(): number {
         return 0;
+    }
+
+    constructor() {
+        this.word_list = (word_file as unknown) as string[]
+    }
+
+    known(words: Array<string>) {
+
     }
 
     one_edit(word: string) {
